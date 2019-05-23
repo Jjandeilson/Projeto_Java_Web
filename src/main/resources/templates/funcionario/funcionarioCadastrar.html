@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<title>Pricinpal</title>
+	<meta charset="UTF-8"/>
+	 <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" th:href="@{/materialize/css/materialize.min.css}"  media="screen,projection"/>
+
+</head>
+<body>
+	<nav>
+		<div class="nav-wrapper">
+			<ul class="left hide-on-med-and-down">
+				<li><a href="/">Home</a></li>
+				<li><a href="/produtos">Produto</a></li>
+				<li><a href="/fornecedores">Fornecedor</a></li>
+				<li><a href="/funcionarios">Funcionario</a></li>
+				<li><a href="/usuarios">Usuario</a></li>
+			</ul>
+		</div>
+	</nav>
+	
+	<div class="row">
+	<h1>Cadastro do Funcionario</h1>
+	<div class="container">
+		<form class="col s12" method="post" th:object="${funcionario}" th:action="@{/cadastrarFuncionario}">
+			<div class="row">
+				<div class="input-field col s6">
+		          <input type="text" class="validate" th:field="*{nomeFuncionario}">
+		          <span th:if="${#fields.hasErrors('nomeFuncionario')}" th:errors="*{nomeFuncionario}"></span>
+		          <label>Nome do funcionario</label>
+		        </div>
+			</div>
+			<div class="row">
+				<div class="input-field col s6">
+		          <input type="text" class="validate" th:field="*{estado}">
+		          <span th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}"></span>
+		          <label>estado</label>
+		        </div>
+			</div>
+			<div class="row">
+				<div class="input-field col s6">
+		          <input type="text" class="validate" th:field="*{cidade}">
+		          <span th:if="${#fields.hasErrors('cidade')}" th:errors="*{cidade}"></span>
+		          <label>cidade</label>
+		        </div>
+			</div>
+			<div class="row">
+				<div class="input-field col s6">
+		          <input type="text" class="validate" th:field="*{cpf}">
+		          <span th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}"></span>
+		          <label>cpf</label>
+		        </div>
+			</div>
+			<div class="row">
+				<div class="input-field col s6">
+		          <input type="text" class="validate" th:field="*{rg}">
+		          <span th:if="${#fields.hasErrors('rg')}" th:errors="*{rg}"></span>
+		          <label>rg</label>
+		        </div>
+			</div>
+			<div class="row">
+				<div class="input-field col s6">
+		          <input type="date" class="validate" th:field="*{data}">
+		          <span th:if="${#fields.hasErrors('data')}" th:errors="*{data}"></span>
+		          <label>data</label>
+		        </div>
+			</div>
+		<button class="waves-effect waves-light btn" type="submit"><i class="material-icons left">save</i>Salvar</button>
+		</form>
+	 </div>
+	</div>
+	
+	<!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" th:src="@{materialize/js/materialize.min.js}"></script>
+</body>
+</html>
