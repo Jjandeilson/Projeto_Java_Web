@@ -4,15 +4,14 @@
 <head>
 	<title>Produto</title>
 	<meta charset="UTF-8"/>
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <!--Import materialize.css-->
-      <link type="text/css" rel="stylesheet" th:href="@{materialize/css/materialize.min.css}"  media="screen,projection"/>
+	
+      <link type="text/css" rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}"/>
 
 </head>
 <body>
 	<nav>
-		<div class="nav-wrapper">
-			<ul class="left hide-on-med-and-down">
+		<div>
+			<ul>
 				<li><a href="/">Home</a></li>
 				<li><a href="/produtos">Produto</a></li>
 				<li><a href="/fornecedores">Fornecedor</a></li>
@@ -20,29 +19,29 @@
 				<li><a href="/usuarios">Usuario</a></li>
 			</ul>
 			<form method="post" th:action="@{/logout}">	
-				<button type="submit" class="nav-wrapper right hide-on-med-and-down waves-effect btn-small">Sair</button>
+				<button type="submit">Sair</button>
 			</form>
 		</div>
 	</nav>
 	
 	<h1>Tabela de produtos</h1>
 	
-	<div class=row>
-		<form class="col s12" th:object="${produto}" th:action="@{/produtos/nomeProduto}" method="get">
-			<div class="row">
-				<div class="input-field col s2">
-			       <input name="nomeProduto" type="text" class="validate">
+	<div>
+		<form th:object="${produto}" th:action="@{/produtos/nomeProduto}" method="get">
+			<div>
+				<div>
+			       <input name="nomeProduto" type="text">
 			       <label>Nome</label>
 			    </div>
-			<button class="waves-effect waves-light btn" type="submit">Buscar</button>
+			<button type="submit">Buscar</button>
 			</div>
 			</form>
 	</div>
 	
-	<div class="container">
+	<div>
 		<span th:text="${#strings.isEmpty(messagem)} ? 
           '' : ${messagem}"></span>
-		<table class="centered">
+		<table>
 			<thead>
 				<tr>
 					<th>Id</th>
@@ -61,18 +60,14 @@
 					<td th:text="${produto.PrecoVenda}"></td>
 					<td th:text="${produto.marca}"></td>
 					<td>
-						<a class="waves-effect waves-light btn-small" th:href="@{/alterar/{id} (id=${produto.idProduto})}"><i class="material-icons center">edit</i></a>
-						<a class="waves-effect waves-light btn-small" th:href="@{/produtos/{id} (id=${produto.idProduto})}"><i class="material-icons center">delete</i></a>
+						<a th:href="@{/alterar/{id} (id=${produto.idProduto})}"><i>edit</i></a>
+						<a th:href="@{/produtos/{id} (id=${produto.idProduto})}"><i>delete</i></a>
 					</td>
 				</tr>
 			</tbody>
 		</table>
-		<a href="/cadastrarProduto" class="waves-effect waves-light btn"><i class="material-icons left">add_circle</i>Novo</a>
+		<a href="/cadastrarProduto"><i>add_circle</i>Novo</a>
 			
 	</div>
-	
-	
-	<!--JavaScript at end of body for optimized loading-->
-      <script type="text/javascript" th:src="@{/materialize/js/materialize.min.js}"></script>
 </body>
 </html>

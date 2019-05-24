@@ -4,16 +4,13 @@
 <head>
 	<title>Pricinpal</title>
 	<meta charset="UTF-8"/>
-	 <!--Import Google Icon Font-->
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <!--Import materialize.css-->
-      <link type="text/css" rel="stylesheet" th:href="@{/materialize/css/materialize.min.css}"  media="screen,projection"/>
+      <link type="text/css" rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}"/>
 
 </head>
 <body>
 	<nav>
-		<div class="nav-wrapper">
-			<ul class="left hide-on-med-and-down">
+		<div>
+			<ul>
 				<li><a href="/">Home</a></li>
 				<li><a href="/produtos">Produto</a></li>
 				<li><a href="/fornecedores">Fornecedor</a></li>
@@ -23,51 +20,48 @@
 		</div>
 	</nav>
 	
-	<div class="row">
+	<div>
 	<h1>cadastro do fornecedor</h1>
-	<div class="container">
-		<form class="col s12" th:object="${fornecedor}" method="post" th:action="@{/cadastrarFornecedor/salvar}">
-			<div class="row">
-				<div class="input-field col s6">
-		          <input type="text" class="validate" th:field="*{nomeFornecedor}">
+	<div>
+		<form th:object="${fornecedor}" method="post" th:action="@{/cadastrarFornecedor/salvar}">
+			<div>
+				<div>
+		          <input type="text" th:field="*{nomeFornecedor}">
 		          <span th:if="${#fields.hasErrors('nomeFornecedor')}" th:errors="*{nomeFornecedor}"></span>
 		          <label>Nome do produto</label>
 		        </div>
 			</div>
-			<div class="row">
-				<div class="input-field col s6">
-		          <input type="text" class="validate" th:field="*{estado}">
+			<div>
+				<div>
+		          <input type="text" th:field="*{estado}">
 		          <span th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}"></span>
 		          <label>Estado</label>
 		        </div>
 			</div>
-			<div class="row">
-				<div class="input-field col s6">
-		          <input type="text" class="validate" th:field="*{cidade}">
+			<div>
+				<div>
+		          <input type="text" th:field="*{cidade}">
 		          <span th:if="${#fields.hasErrors('cidade')}" th:errors="*{cidade}"></span>
 		          <label>Cidade</label>
 		        </div>
 			</div>
-			<div class="row">
-				<div class="input-field col s6">
-		          <input type="text" class="validate" th:field="*{email}">
+			<div>
+				<div>
+		          <input type="text" th:field="*{email}">
 		          <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
 		          <label>Email</label>
 		        </div>
 			</div>
-			<div class="row">
-				<div class="input-field col s6">
-		          <input type="text" class="validate" th:field="*{telefone}">
+			<div>
+				<div>
+		          <input type="text" th:field="*{telefone}">
 		          <span th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}"></span>
 		          <label>Telefone</label>
 		        </div>
 			</div>
-		<button class="waves-effect waves-light btn" type="submit"><i class="material-icons left">save</i>Salvar</button>
+		<button type="submit"><i>save</i>Salvar</button>
 		</form>
 	 </div>
 	</div>
-	
-	<!--JavaScript at end of body for optimized loading-->
-      <script type="text/javascript" th:src="@{/materialize/js/materialize.min.js}"></script>
 </body>
 </html>

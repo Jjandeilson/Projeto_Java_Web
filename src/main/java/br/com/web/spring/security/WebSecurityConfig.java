@@ -20,7 +20,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-		.antMatchers("/materialize/**").permitAll()
+		.antMatchers("/bootstrap/**").permitAll()
 		.antMatchers("/usuarios").access("hasRole('ROLE_ENTRAR')")
 		.anyRequest().authenticated()
 		.and().formLogin().loginPage("/login").permitAll()
