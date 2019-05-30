@@ -2,61 +2,135 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
-	<title>Editar produto</title>
+	<title>Funcionario</title>
 	<meta charset="UTF-8"/>
-      <link type="text/css" rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}"/>
-
+	<!-- 
+	<link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.css"/>
+	<link type="text/css" rel="stylesheet" href="bootstrap/css/estilo.css"/>
+	 -->
+	
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+		<link type="text/css" rel="stylesheet" href="bootstrap/css/estilo.css"/>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<style>
+		body {
+		    background: url(https://source.unsplash.com/BGXhuJIbx78);
+		    background-size: cover;
+		    background-position: center; 
+		}		
+		body,
+		html {
+		    width: 100%;
+		    height: 100%;
+		    font-family: "Roboto";
+		    color: #000;
+		}
+		.navbar-right{
+			padding-top: 10px;
+			padding-bottom: 5px;
+		}
+		.input-group{
+			padding-bottom: 15px;
+		}
+		.btn-primary {
+			width: 100%;
+		}
+		.content{
+			padding-top: 20%;
+			padding-bottom: 20%;
+			text-align: center;
+		    text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+		                 0px 8px 13px rgba(0,0,0,0.1),
+		                 0px 18px 23px rgba(0,0,0,0.1);
+		}
+		.table{
+			color: #000;
+			text-align: left;
+		}
+		
+	</style>
 </head>
 <body>
-
-	<nav>
-		<div>
-			<ul>
-				<li><a href="/">Home</a></li>
-				<li><a href="/produtos">Produto</a></li>
-				<li><a href="/fornecedores">Fornecedor</a></li>
-				<li><a href="/funcionarios">Funcionario</a></li>
-				<li><a href="/usuarios">Usuario</a></li>
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">Ctrl. Loja</a>
+		</div>
+		
+		<div id="navbar" class="collapse navbar-collapse">
+			<ul class="nav navbar-nav">
+			  <li>
+				<a href="/">Home </a>
+			  </li>
+			  <li class="active">
+				<a href="/produtos">Produto <span class="sr-only">(current)</span> </a>
+			  </li>
+			  <li>
+				<a href="/fornecedores">Fornecedor</a>
+			  </li>
+			  <li >
+				<a href="/funcionarios">Funcionário </a>
+			  </li>
+			  <li>
+				<a class="nav-link" href="/usuarios">Usuário</a>
+			  </li>      
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<form class="form-inline my-2 my-lg-0" method="post" th:action="@{/logout}">
+					  <button class="btn btn-primary" type="submit">Sair</button>
+					</form>
+				</li>
+				
 			</ul>
 		</div>
-	</nav>
-	
-	<div>
-	<h1>Alterar do produto</h1>
-	<div>
-		<form method="post" th:object="${produto}" th:action="@{/alterar}">
-			<div>
-				<input type="hidden" th:field="*{idProduto}">
-				<div>
-		          <input type="text" th:field="*{nomeProduto}">
-		          <span th:if="${#fields.hasErrors('nomeProduto')}" th:errors="*{nomeProduto}"></span>
-		          <label>Nome do produto</label>
-		        </div>
-			</div>
-			<div>
-				<div>
-		          <input type="text" th:field="*{marca}">
-		          <span th:if="${#fields.hasErrors('marca')}" th:errors="*{marca}"></span>
-		          <label>Marca</label>
-		        </div>
-			</div>
-			<div>
-				<div>
-		          <input type="number" th:field="*{precoCompra}">
-		          <span th:if="${#fields.hasErrors('precoCompra')}" th:errors="*{precoCompra}"></span>
-		          <label>Preço de compra</label>
-		        </div>
-			</div>
-			<div>
-				<div>
-		          <input type="number" th:field="*{precoVenda}">
-		          <span th:if="${#fields.hasErrors('precoVenda')}" th:errors="*{precoVenda}"></span>
-		          <label>Preço de venda</label>
-		        </div>
-			</div>
-		<button type="submit"><i>save</i>Salvar</button>
-		</form>
-	 </div>
 	</div>
+</nav>
+
+<div class="container">
+		<div class="row">
+	 		<div class="col-lg-12">
+	 			<div class="content">
+
+					<div style="padding-left:30%; padding-right:30%">
+						<form class="login" method="post" th:object="${produto}" th:action="@{/alterar}">
+							<h1>Alterar produto</h1><br>
+							<div class="input-group">
+								<input id="login" type="hidden" th:field="*{idProduto}">
+								<span th:if="${#fields.hasErrors('nomeProduto')}" th:errors="*{nomeProduto}"></span>								
+								<span class="input-group-addon" id="sizing-addon2">Nome</span>      
+							    <input class="form-control" placeholder="Username" aria-describedby="sizing-addon2" id="login" type="text" th:field="*{nomeProduto}">        
+							</div>
+							<div class="input-group">
+						          <span class="input-group-addon" id="sizing-addon2">Marca</span>  
+						          <input class="form-control" placeholder="Username" aria-describedby="sizing-addon2" id="login" type="text" th:field="*{marca}">
+							</div>
+							<div class="input-group">
+						          <span th:if="${#fields.hasErrors('precoCompra')}" th:errors="*{precoCompra}"></span>
+						          <span class="input-group-addon" id="sizing-addon2">Preço de Compra</span> 
+						          <input class="form-control" placeholder="Username" aria-describedby="sizing-addon2" id="login" type="number" th:field="*{precoCompra}">
+							</div>
+							<div class="input-group">
+						          <span th:if="${#fields.hasErrors('precoVenda')}" th:errors="*{precoVenda}"></span>
+						          <span class="input-group-addon" id="sizing-addon2">Preço de Venda</span> 
+						          <input class="form-control" placeholder="Username" aria-describedby="sizing-addon2" id="login" type="number" th:field="*{precoVenda}">
+							</div>
+						<button class="btn btn-primary" type="submit"><i></i>Salvar</button>
+						</form>
+					 </div>
+			 </div>
+		</div>
+	</div>
+</div>
+
 </body>
 </html>

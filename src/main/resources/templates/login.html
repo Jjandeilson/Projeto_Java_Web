@@ -4,33 +4,47 @@
 	<head> 
 		<title>Tela de login</title>
 		<meta charset="UTF-8">
-      <link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.css"/>
+      <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+		<link type="text/css" rel="stylesheet" href="bootstrap/css/estilo.css"/>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
       
 	</head>
 <body>
-	<div th:if="${param.logout}">
-		<span>Você saiu da aplicação</span>
-	</div>
-	<div>
-		<form th:object="${user}" th:action="@{/login}" method="post">
-			<div>
-				<div>
-				 	<i >account_circle</i>
-					<input type="text" name="username">
-					<label for="usuarioLogin">Usuario</label>
-				</div>
+	
+	
+	 <div class="container">
+ 	<div class="row">
+ 		<div class="col-lg-12">
+ 			<div class="content">
+
+				
+
+				<form class="login" th:object="${user}" th:action="@{/login}" method="post">
+					<div th:if="${param.logout}">
+						<span><h3> Você saiu da aplicação. <br>Acesse novamente: </h3></span>
+					</div>
+					<br>
+					<div class="input-group">
+					  <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-user"></i></span>
+					  <input name="username" type="text" class="form-control" placeholder="Usuário" aria-describedby="basic-addon1">
+					</div>
+					<br>
+					<div class="input-group">
+					  <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-asterisk"></i></span>
+					  <input name="password" type="password" class="form-control" placeholder="Senha" aria-describedby="basic-addon2">
+					</div>
+					<br>
+					<span th:text="${error}"></span>
+					<button class="btn btn-primary" type="submit">Entrar</button>
+				</form>
+				
 			</div>
-			<div >
-				<div >
-				 	<i >mode_edit</i>
-					<input type="password" name="password">			
-					<label for="senha">Passoword</label>
-				</div>
-			</div>
-			<span th:text="${error}"></span>
-			<button type="submit"><i>save</i>Salvar</button>
-		</form>
-	</div>
+ 		</div>
+ 	</div>
+</div>
 	
 </body>
 </html>
