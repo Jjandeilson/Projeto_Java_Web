@@ -16,7 +16,7 @@
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
 	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<style>
-		body {
+				body {
 		    background: url(https://source.unsplash.com/BGXhuJIbx78);
 		    background-size: cover;
 		    background-position: center; 
@@ -26,7 +26,7 @@
 		    width: 100%;
 		    height: 100%;
 		    font-family: "Roboto";
-		    color: #000;
+		    color: #fff;
 		}
 		.navbar-right{
 			padding-top: 10px;
@@ -50,6 +50,18 @@
 			color: #000;
 			text-align: left;
 		}
+		th, tr{
+			color: #000;
+			text-align: center;
+		}
+		h1 {
+	font-weight: 700;
+	font-size: 5em;
+	}
+	span{
+	margin-bottom: -10px; 
+	color: red;
+	}
 		
 	</style>
 </head>
@@ -100,30 +112,44 @@
 		<div class="row">
 	 		<div class="col-lg-12">
 	 			<div class="content">
-
+					<h1>Ctrl. Loja</h1>
+					<hr>
 					<div style="padding-left:30%; padding-right:30%">
 						<form class="login" method="post" th:object="${produto}" th:action="@{/alterar}">
-							<h1>Alterar produto</h1><br>
+							<h2>Alterar produto</h2><br>
+							
+							<div>
+								<span th:if="${#fields.hasErrors('nomeProduto')}" th:errors="*{nomeProduto}"></span>
 							<div class="input-group">
 								<input id="login" type="hidden" th:field="*{idProduto}">
-								<span th:if="${#fields.hasErrors('nomeProduto')}" th:errors="*{nomeProduto}"></span>								
 								<span class="input-group-addon" id="sizing-addon2">Nome</span>      
 							    <input class="form-control" placeholder="Username" aria-describedby="sizing-addon2" id="login" type="text" th:field="*{nomeProduto}">        
 							</div>
+							</div>
+							
+							<div>
 							<div class="input-group">
 						          <span class="input-group-addon" id="sizing-addon2">Marca</span>  
 						          <input class="form-control" placeholder="Username" aria-describedby="sizing-addon2" id="login" type="text" th:field="*{marca}">
 							</div>
+							</div>
+							
+							<div>
+								<span th:if="${#fields.hasErrors('precoCompra')}" th:errors="*{precoCompra}"></span>
 							<div class="input-group">
-						          <span th:if="${#fields.hasErrors('precoCompra')}" th:errors="*{precoCompra}"></span>
 						          <span class="input-group-addon" id="sizing-addon2">Preço de Compra</span> 
 						          <input class="form-control" placeholder="Username" aria-describedby="sizing-addon2" id="login" type="number" th:field="*{precoCompra}">
 							</div>
+							</div>
+							
+							<div>
+								<span th:if="${#fields.hasErrors('precoVenda')}" th:errors="*{precoVenda}"></span>
 							<div class="input-group">
-						          <span th:if="${#fields.hasErrors('precoVenda')}" th:errors="*{precoVenda}"></span>
 						          <span class="input-group-addon" id="sizing-addon2">Preço de Venda</span> 
 						          <input class="form-control" placeholder="Username" aria-describedby="sizing-addon2" id="login" type="number" th:field="*{precoVenda}">
 							</div>
+							</div>
+							
 						<button class="btn btn-primary" type="submit"><i></i>Salvar</button>
 						</form>
 					 </div>

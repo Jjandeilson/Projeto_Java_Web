@@ -51,9 +51,13 @@ hr {
 }
 
 .table{
-	color: #000;
-	text-align: left;
-}
+			color: #000;
+			text-align: left;
+		}
+th, tr{
+			color: #000;
+			text-align: center;
+		}
 
 
 .novoFornecedor{

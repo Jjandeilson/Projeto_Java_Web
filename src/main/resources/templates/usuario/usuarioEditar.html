@@ -21,12 +21,17 @@
 		    background-size: cover;
 		    background-position: center; 
 		}		
+		body {
+		    background: url(https://source.unsplash.com/BGXhuJIbx78);
+		    background-size: cover;
+		    background-position: center; 
+		}		
 		body,
 		html {
 		    width: 100%;
 		    height: 100%;
 		    font-family: "Roboto";
-		    color: #000;
+		    color: #fff;
 		}
 		.navbar-right{
 			padding-top: 10px;
@@ -50,6 +55,18 @@
 			color: #000;
 			text-align: left;
 		}
+		th, tr{
+			color: #000;
+			text-align: center;
+		}
+		h1 {
+	font-weight: 700;
+	font-size: 5em;
+	}
+	span{
+	margin-bottom: -10px; 
+	color: red;
+	}
 		
 	</style>
 </head>
@@ -102,25 +119,37 @@
 	 		<div class="col-lg-12">
 	 			<div class="content">
 
+					<h1>Ctrl. Loja</h1>
+					<hr>
 					<div style="padding-left:30%; padding-right:30%">
 						<form class="login" method="post" th:object="${usuario}" th:action="@{/usuario/alterar}">
 							<h1>Alterar usuario</h1><br>
+							
+							<div>
+								<span th:if="${#fields.hasErrors('usuarioLogin')}" th:errors="*{usuarioLogin}"></span>
 							<div class="input-group">
-								<input type="hidden" th:field="*{idUsuario}">
-								<span th:if="${#fields.hasErrors('usuarioLogin')}" th:errors="*{usuarioLogin}"></span>								
+								<input type="hidden" th:field="*{idUsuario}">																
 								<span class="input-group-addon" id="sizing-addon2">Login</span>      
 							    <input class="form-control validate" placeholder="Username" aria-describedby="sizing-addon2" id="login" type="text" th:field="*{usuarioLogin}">        
 							</div>
-							<div class="input-group">
-						          <span th:if="${#fields.hasErrors('senha')}" th:errors="*{senha}"></span>
+							</div>
+							
+							<div>
+								<span th:if="${#fields.hasErrors('senha')}" th:errors="*{senha}"></span>
+							<div class="input-group">						          
 						          <span class="input-group-addon" id="sizing-addon2">Senha</span>  
 						          <input class="form-control" placeholder="Username" aria-describedby="sizing-addon2" id="login" type="text" th:field="*{senha}">
 							</div>
-							<div class="input-group">
-						          <span th:if="${#fields.hasErrors('tipo')}" th:errors="*{tipo}"></span>
+							</div>
+							
+							<div>
+								<span th:if="${#fields.hasErrors('tipo')}" th:errors="*{tipo}"></span>
+							<div class="input-group">						          
 						          <span class="input-group-addon" id="sizing-addon2">Tipo</span> 
 						          <input class="form-control" placeholder="Username" aria-describedby="sizing-addon2" id="login" type="text" th:field="*{tipo}">
 							</div>
+							</div>
+							
 						<button class="btn btn-primary" type="submit"><i></i>Salvar</button>
 						</form>
 					 </div>

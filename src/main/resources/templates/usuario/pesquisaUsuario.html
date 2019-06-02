@@ -26,7 +26,7 @@
 		    width: 100%;
 		    height: 100%;
 		    font-family: "Roboto";
-		    color: #000;
+		    color: #fff;
 		}
 		.navbar-right{
 			padding-top: 10px;
@@ -50,6 +50,19 @@
 			color: #000;
 			text-align: left;
 		}
+		th, tr{
+			color: #000;
+			text-align: center;
+		}
+		h1 {
+	font-weight: 700;
+	font-size: 5em;
+	}
+	span{
+	margin-bottom: -10px; 
+	color: red;
+	}
+		
 		
 	</style>
 </head>
@@ -101,10 +114,11 @@
  	<div class="row">
  		<div class="col-lg-12">
  			<div class="content">
- 	
+ 				<h1>Ctrl. Loja</h1>
+				<hr>
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h1>Tabela de Usuarios</h1>
+						<h2>Tabela de Usuarios</h2>
 					</div>
 					<span th:text="${#strings.isEmpty(messagem)} ? 
           			'' : ${messagem}"></span>
@@ -113,7 +127,6 @@
 							<tr>
 								<th>Id</th>
 								<th>Usuario</th>
-								<th>senha</th>
 								<th>tipo</th>
 								<th>Editar</th>
 								<th>Excluir</th>
@@ -123,7 +136,6 @@
 							<tr th:each="usuario : ${usuarios}">
 								<td th:text="${usuario.idUsuario}"></td>
 								<td th:text="${usuario.usuarioLogin}"></td>
-								<td th:text="${usuario.senha}"></td>
 								<td th:text="${usuario.tipo}"></td>
 								<td>
 									<a th:href="@{/usuario/alterar/{id} (id=${usuario.idUsuario})}"><i class="glyphicon glyphicon-refresh

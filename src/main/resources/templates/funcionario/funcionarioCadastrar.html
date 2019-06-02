@@ -17,7 +17,7 @@
 	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	
 		<style>
-		body {
+			body {
 		    background: url(https://source.unsplash.com/BGXhuJIbx78);
 		    background-size: cover;
 		    background-position: center; 
@@ -27,7 +27,7 @@
 		    width: 100%;
 		    height: 100%;
 		    font-family: "Roboto";
-		    color: #000;
+		    color: #fff;
 		}
 		.navbar-right{
 			padding-top: 10px;
@@ -47,6 +47,22 @@
 		                 0px 8px 13px rgba(0,0,0,0.1),
 		                 0px 18px 23px rgba(0,0,0,0.1);
 		}
+		.table{
+			color: #000;
+			text-align: left;
+		}
+		th, tr{
+			color: #000;
+			text-align: center;
+		}
+		h1 {
+	font-weight: 700;
+	font-size: 5em;
+	}
+	span{
+	margin-bottom: -10px; 
+	color: red;
+	}
 	</style>
 	
 </head>
@@ -97,41 +113,61 @@
 		<div class="row">
 	 		<div class="col-lg-12">
 	 			<div class="content">
-
+					<h1>Ctrl. Loja</h1>
+					<hr>
 	
 					<div style="padding-left:30%; padding-right:30%">
 						<form method="post" th:object="${funcionario}" th:action="@{/cadastrarFuncionario}">
 							<h2>Cadastrar Funcionario</h2><br>
-							<div class="input-group">
-					          <span th:if="${#fields.hasErrors('nomeFuncionario')}" th:errors="*{nomeFuncionario}"></span>
+							
+							<div>
+								<span th:if="${#fields.hasErrors('nomeFuncionario')}" th:errors="*{nomeFuncionario}"></span>
+							<div class="input-group">					          
 					          <span class="input-group-addon" id="sizing-addon2">Nome</span> 
 					          <input class="form-control" placeholder="Username" aria-describedby="sizing-addon2" type="text" th:field="*{nomeFuncionario}">
 					        </div>
-							<div class="input-group">					          
-					          <span th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}"></span>
+					        </div>
+					        
+					        <div>
+					        	 <span th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}"></span>
+							<div class="input-group">	        
 					          <span class="input-group-addon" id="sizing-addon2">Estado</span>
 					          <input class="form-control" placeholder="Username" aria-describedby="sizing-addon2" type="text" th:field="*{estado}">
 					        </div>
-							<div class="input-group">					          
-					          <span th:if="${#fields.hasErrors('cidade')}" th:errors="*{cidade}"></span>
+					        </div>
+					        
+					        <div>
+					        	<span th:if="${#fields.hasErrors('cidade')}" th:errors="*{cidade}"></span>
+							<div class="input-group">							          
 					          <span class="input-group-addon" id="sizing-addon2">Cidade</span>
 					          <input class="form-control" placeholder="Username" aria-describedby="sizing-addon2" type="text" th:field="*{cidade}">
 					        </div>
+					        </div>
+					        
+					        <div>
+					        	<span th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}"></span>
 							<div class="input-group">
-					          <span th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}"></span>
 					          <span class="input-group-addon" id="sizing-addon2">CPF</span>
 					          <input class="form-control" placeholder="Username" aria-describedby="sizing-addon2" type="text" th:field="*{cpf}">
 					        </div>
+					        </div>
+					        
+					        <div>
+					        	<span th:if="${#fields.hasErrors('rg')}" th:errors="*{rg}"></span>
 							<div class="input-group">					          
-					          <span th:if="${#fields.hasErrors('rg')}" th:errors="*{rg}"></span>
 					          <span class="input-group-addon" id="sizing-addon2">RG</span>
 					          <input class="form-control" placeholder="Username" aria-describedby="sizing-addon2" type="text" th:field="*{rg}">
 					        </div>
-							<div class="input-group">
-					          <span th:if="${#fields.hasErrors('data')}" th:errors="*{data}"></span>
+					        </div>
+					        
+					        <div>
+					        	<span th:if="${#fields.hasErrors('data')}" th:errors="*{data}"></span>
+							<div class="input-group">					          
 					          <span class="input-group-addon" id="sizing-addon2">Data</span>
 					          <input class="form-control" placeholder="Username" aria-describedby="sizing-addon2" type="date" th:field="*{data}">
 					        </div>
+					        </div>
+					        
 							<button class="btn btn-primary" type="submit"><i></i>Salvar</button>
 						</form>
 					</div>
